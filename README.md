@@ -1,7 +1,7 @@
-Webservices
+Angular Js with Spring backend
 ==============
 
-Preface
+A sample project using Angular + Spring
 --------------
 
 *This will be Italic*

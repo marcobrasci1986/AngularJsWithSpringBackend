@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+<meta charset="utf-8">
+<title>My AngularJS App</title>
+<link rel="stylesheet" href="resources/css/app.css" />
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.css" />
+
+</head>
+<body>
+	<div class="container">
+		<nav class="navbar navbar-default navbar-top" role="navigation" ng-controller='menuController'>
+			<div class="container">
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse navbar-left navbar-ex1-collapse">
+					<ul class="nav navbar-nav">
+						<li ng-class="{active:isActive('/products')}"><a href="#/products">products</a></li>
+						<li ng-class="{active:isActive('/view2')}"><a href="#/view2">view2</a></li>
+					</ul>
+
+				</div>
+				<div class="navbar-text pull-right" >
+					Signed in as <a href="#" class="navbar-link">Mark Otto</a>				
+				</div>
+			</div>
+		</nav>
+	</div>
+	
+	<div class="container">
+		<div ng-view></div>
+
+		<div>
+			Angular seed app: v<span app-version></span>
+		</div>
+	</div>
+
+	<script src="resources/lib/angular/angular.js"></script>
+	<script src="resources/lib/angular/angular-route.js"></script>
+	<script src="resources/lib/angular/angular-local-storage.js"></script>
+	<script src="resources/lib/angular/ui-bootstrap-tpls-0.10.0.min.js"></script>
+	<script src="resources/lib/angular/angular-animate.js"></script>
+	<script src="resources/js/app.js"></script>
+	<script src="resources/js/helperclasses/shoppingCart.js"></script>
+	<script src="resources/js/services.js"></script>
+	<script src="resources/js/controllers/controllers.js"></script>
+	<script src="resources/js/controllers/menuController.js"></script>
+	<script src="resources/js/controllers/productController.js"></script>
+	<script src="resources/js/filters.js"></script>
+	<script src="resources/js/directives.js"></script>
+</body>
+</html>

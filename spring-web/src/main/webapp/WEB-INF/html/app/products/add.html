@@ -1,0 +1,39 @@
+<div class="container">
+	<h1>Add.html</h1>
+	<div ng-repeat="alert in allInfos()" class="{{alert.type}}">{{alert.msg}}</div>
+
+	<div class="container search-box row-fluid form-inline">
+		<label>Filter: </label> <input type="text" ng-model="filterName" /> <label>Order by: </label> <select
+			ng-model="orderField" ng-options="label for label in orderFields" class="input-medium"></select> <select
+			ng-model="orderReverse" class="input-medium">
+			<option value="true">Descending</option>
+			<option value="false">Ascending</option>
+		</select>
+	</div>
+	
+	<table class="table table-bordered table-striped table-hover" ng-show="products.length > 0">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Price</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="product in products | filter:filterName">
+				<td>{{product.name}}</td>
+				<td>{{product.price | currency}}</td>
+				<td><button class="btn btn-mini btn-danger" ng-click="removeProduct(product)">Remove</button>
+					<button class="btn btn-mini btn-success" ng-click="cart.addItem(product)">Add</button></td>
+
+			</tr>
+		</tbody>
+	</table>
+	<div class="well pull-right">
+				<button class="btn btn-primary" type="button">
+					Cart <span class="badge">{{cart.getLength()}}</span> <span class="badge">{{cart.getTotalAmount()}} &#8364;</span>
+				</button>
+</div>
+	<button class="btn btn-mini btn-danger" ng-click="cart.clearAll()">Update</button>
+
+</div>

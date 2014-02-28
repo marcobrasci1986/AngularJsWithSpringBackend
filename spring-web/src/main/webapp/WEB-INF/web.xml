@@ -1,0 +1,50 @@
+<web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+	<display-name>Spring Web MVC Application</display-name>
+
+	<!-- The dispatcherServlet is configured in [servlet-name]-servlet.xml (in our case it's web-servlet.xml) In this xml file you specify: 1. The 
+		view resolver (for example: Freemarker or JSP) 2. The path were the 'views' (.jsp or .ftl files) are stored -->
+	<servlet>
+		<servlet-name>web</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>web</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			/WEB-INF/persistence-context.xml
+			/WEB-INF/spring-security.xml
+		</param-value>
+	</context-param>
+
+
+	<!-- But we still need a way DispatcherServlet to load the other configuration files. That's where ContextLoaderListener comes into play. If 
+		not specified otherwise, the context loader will look for a Spring configuration file at /WEB-INF/applicationContext.xml. But this single file 
+		doesn't lend itself to breaking up the application context into several pieces. So we'll need to override this default. -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
+		<!-- Spring Security -->
+	<filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping> 
+
+
+</web-app>

@@ -2,6 +2,7 @@ Angular Js with Spring backend
 ==============
 
 A sample project using Angular + Spring
+add remote test
 --------------
 
 *This will be Italic*
